@@ -80,7 +80,7 @@ frontend"`; do
     if [ ${LOCAL} -eq 1 ]; then
         cat "./deploy/${service}.yml" | sed "s/%%KUBEALIVE_DOCKER_REPO%%/${KUBEALIVE_DOCKER_REPO}/" | sed "s/%%ARCHSUFFIX%%/${ARCHSUFFIX}/" | sed "s/%%BRANCH_SUFFIX%%/${BRANCH_SUFFIX}/" | kubectl apply -f -
     else
-        curl -sSL "https://raw.githubusercontent.com/daniel-kun/kube-alive/master/deploy/${service}.yml" | sed "s/%%KUBEALIVE_DOCKER_REPO%%/${KUBEALIVE_DOCKER_REPO}/" | sed "s/%%ARCHSUFFIX%%/${ARCHSUFFIX}/" | sed "s/%%BRANCH_SUFFIX%%/${BRANCH_SUFFIX}/" | kubectl apply -f -
+        curl -sSL "https://raw.githubusercontent.com/eliserame/kube-alive/master/deploy/${service}.yml" | sed "s/%%KUBEALIVE_DOCKER_REPO%%/${KUBEALIVE_DOCKER_REPO}/" | sed "s/%%ARCHSUFFIX%%/${ARCHSUFFIX}/" | sed "s/%%BRANCH_SUFFIX%%/${BRANCH_SUFFIX}/" | kubectl apply -f -
     fi
 done
 
@@ -89,7 +89,7 @@ then
     if [ ${LOCAL} -eq 1 ]; then
         kubectl apply -f ./deploy/ingress.yml
     else
-        kubectl apply -f "https://raw.githubusercontent.com/daniel-kun/kube-alive/master/deploy/ingress.yml"
+        kubectl apply -f "https://raw.githubusercontent.com/eliserame/kube-alive/master/deploy/ingress.yml"
     fi
 
     echo "
@@ -115,7 +115,7 @@ else
     if [ ${LOCAL} -eq 1 ]; then
          cat ./deploy/external-ip.yml | sed "s/%%KUBEALIVE_PUBLICIP%%/${KUBEALIVE_PUBLICIP}/"  | kubectl apply -f -
     else
-        curl -sSL "https://raw.githubusercontent.com/daniel-kun/kube-alive/master/deploy/external-ip.yml" | sed "s/%%KUBEALIVE_PUBLICIP%%/${KUBEALIVE_PUBLICIP}/" | kubectl apply -f -
+        curl -sSL "https://raw.githubusercontent.com/eliserame/kube-alive/master/deploy/external-ip.yml" | sed "s/%%KUBEALIVE_PUBLICIP%%/${KUBEALIVE_PUBLICIP}/" | kubectl apply -f -
     fi
     echo "
     FINISHED!
